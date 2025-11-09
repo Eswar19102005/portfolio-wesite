@@ -1,0 +1,658 @@
+/* Custom Properties & Reset */
+:root {
+    --primary-purple: #8e44ad; /* Base Purple */
+    --accent-gradient: linear-gradient(90deg, #a855f7, #6366f1); /* Purple to Blue Gradient */
+    --light-bg: #f8fafc;
+    --main-bg: #ffffff;
+    --text-dark: #333333;
+    --text-mid: #555555;
+    --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --border-radius: 12px; /* Standard card radius */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-purple);
+    transition: color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--main-bg);
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-purple);
+}
+
+nav a {
+    margin-left: 25px;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    padding: 5px 0;
+    transition: all 0.3s ease; /* Ensure smooth transition for gradient effect */
+}
+
+/* Gradient Text Highlight on Hover (Uses theme accent gradient) */
+nav a:hover {
+    font-weight: 700;
+    background: var(--accent-gradient); /* Purple-to-Blue */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback */
+}
+
+/* Active Navigation Link Style (for scroll tracking) (Uses theme accent gradient) */
+.navbar a.active-link {
+    font-weight: 700;
+    background: var(--accent-gradient); /* Purple-to-Blue */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 5px 0;
+}
+
+.navbar a.active-link:hover {
+    -webkit-text-fill-color: transparent; /* Maintain gradient on hover */
+    color: transparent; 
+}
+
+/* --- General Section Styling --- */
+.section {
+    padding: 80px 0;
+}
+
+.light-bg {
+    background-color: var(--light-bg);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-purple);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.card {
+    background-color: var(--main-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 30px;
+    
+    /* Hover Effect Base: Default transparent border */
+    border: 2px solid transparent; 
+    
+    transition: border 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* Hover Effect: Border Outline */
+.card:hover,
+.education-item:hover,
+.achievement-card:hover {
+    /* Add the theme color border on hover */
+    border: 2px solid var(--primary-purple); 
+    
+    /* Removes vertical lift and keeps a subtle shadow */
+    transform: translateY(0); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    padding: 50px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Profile Picture Styling */
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 0 0 5px var(--main-bg), 0 0 0 7px var(--primary-purple);
+    /* FLOATING ANIMATION */
+    animation: float 4s ease-in-out infinite; 
+}
+
+/* KEYFRAMES for the Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); } /* Lifts 10px in the middle */
+    100% { transform: translateY(0); }
+}
+
+.main-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-mid);
+    margin-bottom: 15px;
+}
+
+.contact-info span {
+    color: var(--text-mid);
+    font-size: 0.9rem;
+    margin: 0 10px;
+}
+
+.contact-info i {
+    color: var(--primary-purple);
+    margin-right: 5px;
+}
+
+.hero-actions {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+    margin: 0 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.download-btn {
+    background-image: var(--accent-gradient);
+    color: white;
+}
+
+.contact-btn {
+    background-color: transparent;
+    color: var(--primary-purple);
+    border: 1px solid var(--primary-purple);
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    color: var(--text-mid); 
+    margin: 0 10px;
+    transition: color 0.3s ease; /* For hover color change */
+}
+
+/* SOCIAL ICON HOVER: Changes to purple */
+.social-icons a:hover {
+    color: var(--primary-purple); 
+}
+
+/* --- About Section --- */
+.about-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    color: var(--primary-purple);
+}
+
+.about-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.about-card li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.bullet-point {
+    position: absolute;
+    left: 0;
+    font-size: 8px;
+    color: var(--primary-purple);
+    top: 6px;
+}
+
+/* --- Skills Section --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.skill-group h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-purple);
+    margin-bottom: 20px;
+}
+
+/* Styling for the unordered skill list */
+.skill-list {
+    list-style-type: disc; 
+    margin-left: 15px; 
+    padding-left: 0;
+}
+
+.skill-list li {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    margin-bottom: 8px; 
+    text-align: left;
+}
+
+/* Soft Skills Centering Rule */
+.soft-skills-card {
+    grid-column: 1 / -1; /* Makes the card span the entire row */
+    max-width: 400px; /* Limits the card width */
+    margin: 0 auto; /* Centers the card horizontally */
+}
+
+/* --- Projects Section --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    text-align: left;
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-purple);
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    margin-bottom: 15px;
+}
+
+.project-tags {
+    margin-bottom: 15px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 3px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+}
+
+.python { background-color: #3572A5; }
+.r { background-color: #198ce7; }
+.html { background-color: #E34F26; }
+.css { background-color: #1572B6; }
+.javascript { background-color: #F7DF1E; color: var(--text-dark); }
+
+.project-links a {
+    font-size: 0.9rem;
+    margin-right: 15px;
+}
+
+.project-links i {
+    margin-right: 5px;
+}
+
+/* --- Education Section --- */
+.education-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.education-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.edu-icon {
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+    margin-right: 20px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.edu-content {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.edu-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-purple);
+    margin-bottom: 5px;
+}
+
+.edu-content p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    margin-bottom: 10px;
+}
+
+.edu-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    margin-right: 8px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.final-year, .cgpa {
+    background-color: #e0f2fe; 
+    color: #0c4a6e; 
+}
+
+.pass-percent {
+    background-color: #d1fae5; 
+    color: #065f46; 
+}
+
+.pass-grade {
+    background-color: #d1fae5; 
+    color: #065f46; 
+}
+
+.edu-date {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    min-width: 100px;
+    text-align: right;
+}
+
+/* --- Certifications Section --- */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    /* FIX: Center the grid content when the last row is not full */
+    justify-content: center; 
+}
+
+.cert-card {
+    text-align: left;
+}
+
+.cert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* FIX: Update icon style to match screenshots */
+.cert-header i { 
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+    /* Added to match the style of the ribbon icon */
+    background: transparent; 
+    border-radius: 0;
+}
+
+.verified {
+    font-size: 0.8rem;
+    color: #065f46; 
+    font-weight: 600;
+}
+
+.verified i {
+    color: #065f46;
+    font-size: 0.75rem;
+    margin-right: 3px;
+}
+
+.cert-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.cert-card p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+}
+
+.cert-year {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: var(--text-mid);
+}
+
+/* --- Achievements Section --- */
+.achievements-list {
+    max-width: 600px;
+    margin: 0 auto;
+    /* Added flex and gap for space between achievement cards */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.achievement-card {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding: 20px;
+}
+
+.achieve-icon {
+    font-size: 1.5rem;
+    color: white;
+    background-image: var(--accent-gradient);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.achieve-content {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.achieve-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.achieve-content p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+}
+
+.achieve-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #e0f2fe; 
+    color: #0c4a6e; 
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.achieve-year {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 0.8rem;
+    color: var(--text-mid);
+}
+
+/* --- Contact Section --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.contact-connect-card h3,
+.contact-form-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--primary-purple);
+}
+
+.contact-connect-card p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+}
+
+.contact-detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.contact-detail i {
+    color: var(--primary-purple);
+    margin-right: 10px;
+}
+
+.contact-social {
+    margin-top: 20px;
+}
+
+.contact-social a {
+    font-size: 1.5rem;
+    color: var(--text-mid);
+    margin-right: 15px;
+    transition: color 0.3s ease; /* For hover color change */
+}
+
+/* SOCIAL ICON HOVER: Changes to purple */
+.contact-social a:hover {
+    color: var(--primary-purple); 
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-purple);
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: var(--light-bg);
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.send-btn {
+    width: 100%;
+    background-image: var(--accent-gradient);
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--main-bg);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    border-top: 1px solid #eee;
+}
